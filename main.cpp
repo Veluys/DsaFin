@@ -196,11 +196,11 @@ int main(){
         
         int op;
         if (!isValidNum<int>(op, 1, 3)){continue;} //Input for option must be between 1-3;
-
-        if (op == 3){
-            cout << "\n" <<"Thank you for using the Search & Sort Program";
-            break;	//Exit loop/prgram
-        }
+        
+        if(op == 3){
+        	cout << "\n" <<"Thank you for using the Search & Sort Program"; 
+        	exit(0);	//Immediate termination
+		}
 
         cout << "\n";
         
@@ -213,6 +213,28 @@ int main(){
 
 		//Creates the appropriate object and executes either a search or a sort
         op == 1 ? SearchProblem(op, alg).search() : SortProblem(op, alg).arrange();
+        
+        while(true){
+        	string tryAgain;
+	        
+	        cout << "Do you want to try again? (Y/N): ";
+	        
+			do{
+		        getline(cin, tryAgain);
+		    }while (tryAgain.empty()); //Loop if the user doesn't enter anything
+		    
+		    if(tryAgain == "Y" || tryAgain == "y"){
+		    	cout << "\n";
+		    	break; //Exit the validation prompt, allow the program to continue
+			}
+			else if (tryAgain == "N" || tryAgain == "n"){
+	           	cout << "\n" <<"Thank you for using the Search & Sort Program";
+				exit(0); //Immediate termination
+            }
+            else{
+                cout << "Invalid Input." << endl << endl; //Loop again to ask
+            }
+		}
     }
     return 0;
 }
